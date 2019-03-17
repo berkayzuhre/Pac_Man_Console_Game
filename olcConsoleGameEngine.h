@@ -1,3 +1,81 @@
+/*
+OneLoneCoder.com - Command Line Game Engine
+"Who needs a frame buffer?" - @Javidx9
+
+Disclaimer
+~~~~~~~~~~
+I don't care what you use this for. It's intended to be educational, and perhaps
+to the oddly minded - a little bit of fun. Please hack this, change it and use it
+in any way you see fit. BUT, you acknowledge that I am not responsible for anything
+bad that happens as a result of your actions. However, if good stuff happens, I
+would appreciate a shout out, or at least give the blog some publicity for me.
+Cheers!
+
+Background
+~~~~~~~~~~
+If you've seen any of my videos - I like to do things using the windows console. It's quick
+and easy, and allows you to focus on just the code that matters - ideal when you're 
+experimenting. Thing is, I have to keep doing the same initialisation and display code
+each time, so this class wraps that up.
+
+Author
+~~~~~~
+Twitter: @javidx9 http://twitter.com/javidx9
+Blog: http://www.onelonecoder.com
+YouTube: http://www.youtube.com/javidx9
+
+Videos:
+~~~~~~
+Original:				https://youtu.be/cWc0hgYwZyc
+Added mouse support:	https://youtu.be/tdqc9hZhHxM
+Beginners Guide:		https://youtu.be/u5BhrA8ED0o
+
+Shout Outs!
+~~~~~~~~~~~
+Thanks to cool people who helped with testing, bug-finding and fixing!
+	YouTube: 	wowLinh, JavaJack59
+
+Last Updated: 05/11/2017
+
+Usage:
+~~~~~~
+This class is abstract, so you must inherit from it. Override the OnUserCreate() function
+with all the stuff you need for your application (for thready reasons it's best to do
+this in this function and not your class constructor). Override the OnUserUpdate(float fElapsedTime)
+function with the good stuff, it gives you the elapsed time since the last call so you
+can modify your stuff dynamically. Both functions should return true, unless you need
+the application to close.
+
+	int main()
+	{
+		// Use olcConsoleGameEngine derived app
+		OneLoneCoder_Example game;
+
+		// Create a console with resolution 160x100 characters
+		// Each character occupies 8x8 pixels
+		game.ConstructConsole(160, 100, 8, 8);
+
+		// Start the engine!
+		game.Start();
+
+		return 0;
+	}
+
+Input is also handled for you - interrogate the m_keys[] array with the virtual
+keycode you want to know about. bPressed is set for the frame the key is pressed down
+in, bHeld is set if the key is held down, bReleased is set for the frame the key
+is released in. The same applies to mouse! m_mousePosX and Y can be used to get
+the current cursor position, and m_mouse[1..5] returns the mouse buttons.
+
+The draw routines treat characters like pixels. By default they are set to white solid
+blocks - but you can draw any unicode character, using any of the colours listed below.
+
+There may be bugs! 
+
+See my other videos for examples!
+http://www.youtube.com/javidx9
+
+*/
 
 
 #ifndef ENGINE_H
